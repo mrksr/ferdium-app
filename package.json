@@ -10,7 +10,7 @@
   "copyright": "org.ferdium",
   "main": "index.js",
   "homepage": "https://github.com/ferdium/ferdium-app",
-  "repository": "https://github.com/ferdium/ferdium-app.git",
+  "repository": "https://github.com/mrksr/ferdium-app.git",
   "private": true,
   "engines": {
     "node": "16.15.0",
