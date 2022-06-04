@@ -256,16 +256,11 @@ jobs:
         shell: bash
       - name: Build Ferdium with publish for 'nightly' branch
         if: ${{ env.GIT_BRANCH_NAME == 'nightly' }}
+        run: npm run build -- --publish always
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.FERDIUM_PUBLISH_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
-          SNAPCRAFT_LOGIN: ${{ secrets.SNAPCRAFT_LOGIN }}
-        run: |
-          sudo snap install snapcraft --classic
-          echo "$SNAPCRAFT_LOGIN" | snapcraft login --with -
-          npm run build -- --publish always -c.snap.publish.repo=nightlies -c.snap.publish.channels=edge
-          snapcraft logout
-        shell: bash
       - name: Build Ferdium with publish for 'release' beta branch
         if: ${{ env.GIT_BRANCH_NAME == 'release' && contains(env.PACKAGE_VERSION, 'beta') }}
         env:
